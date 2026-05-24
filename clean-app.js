@@ -1,10 +1,11 @@
-import { NavigationContainer } from '@react-navigation/native';
+const fs = require('fs');
+const c = `import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useState, useEffect, useRef } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, FlatList, KeyboardAvoidingView, Platform } from 'react-native';
 import { supabase } from './lib/supabase';
 const Stack = createNativeStackNavigator();
-const SERVER = 'https://attractive-cooperation-production.up.railway.app';
+const SERVER = 'http://localhost:3001';
 function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -144,3 +145,6 @@ const s = StyleSheet.create({
   langBtnText: { color: '#fff', fontSize: 10, fontWeight: '600' },
   inputRow: { flexDirection: 'row', padding: 12, backgroundColor: '#fff', borderTopWidth: 0.5, borderTopColor: '#eee', alignItems: 'center' },
 });
+`;
+fs.writeFileSync('App.js', c);
+console.log('Done! Bytes:', c.length);
